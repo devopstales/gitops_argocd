@@ -23,6 +23,9 @@ configs:
       name: argo-cd-helm-repo
       type: helm
       url: https://argoproj.github.io/argo-helm
+    private-repo:
+      name: git-repo
+      url: https://github.com/devopstales/gitops_argocd
       
 #  secret:
 #    argocdServerAdminPassword: "Password1"
