@@ -1,0 +1,28 @@
+server:
+  ingress:
+    enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+      cert-manager.io/cluster-issuer: ca-issuer
+    ingressClassName: "nginx"
+    hosts: 
+      - argocd.k8s.intra
+    tls:
+      - secretName: argocd-tls-certificate
+        hosts:
+          - argocd.k8s.intra
+    https: true
+
+dex:
+  enabled: false
+
+configs:
+  repositories:
+    argo-cd-helm-repo:
+      name: argo-cd-helm-repo
+      type: helm
+      url: https://argoproj.github.io/argo-helm
+      
+#  secret:
+#    argocdServerAdminPassword: "Password1"
