@@ -28,14 +28,14 @@ server:
         schedule: '*/5 * * * *'
         manualSync: true
   additionalApplications:
-    - name: system-apps
+    - name: 05-kubeseal
       finalizers:
       - resources-finalizer.argocd.argoproj.io
       project: system-apps
       source:
         repoURL: https://github.com/devopstales/gitops_argocd
         targetRevision: HEAD
-        path: apps
+        path: apps/05-kubeseal
         directory:
           recurse: true
       destination:
@@ -54,6 +54,10 @@ configs:
       name: argo-cd-helm-repo
       type: helm
       url: https://argoproj.github.io/argo-helm
+    sealed-secrets:
+      name: sealed-secrets
+      type: helm
+      url: https://bitnami-labs.github.io/sealed-secrets
     private-repo:
       name: git-repo
       url: https://github.com/devopstales/gitops_argocd
