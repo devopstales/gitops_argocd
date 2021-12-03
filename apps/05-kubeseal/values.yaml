@@ -1,1 +1,6 @@
 quarkus:
+  image:
+    repository: quay.io/bitnami/sealed-secrets-controller
+    tag: v0.16.0
+    pullPolicy: IfNotPresent
+    pullSecret: ""
